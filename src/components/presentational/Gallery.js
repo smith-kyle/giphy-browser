@@ -2,11 +2,13 @@ import React from "react";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
+const NUM_COLS = 3;
+
 const Gallery = ({ gifs }) => (
   <div className="Gallery">
     <GridList
       cellHeight={160}
-      cols={3}
+      cols={NUM_COLS}
       style={{
         width: 500,
         height: 450

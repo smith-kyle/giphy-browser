@@ -7,9 +7,12 @@ import GalleryContainer from "./containers/GalleryContainer";
 function App() {
   return (
     <div className="App">
-      <QueryBarContainer />
-      <GalleryContainer />
-      <LoadingContainer />
+      <QueryBarContainer>
+        <div className="App-results">
+          <GalleryContainer />
+          <LoadingContainer />
+        </div>
+      </QueryBarContainer>
     </div>
   );
 }

@@ -47,5 +47,5 @@ export const gifsUrlSelector = createSelector(
           q: query,
           offset
         })
-      : appendURLParams(GIPHY_TRENDING_URL, { giphyRequestDefaults, offset })
+      : appendURLParams(GIPHY_TRENDING_URL, { ...giphyRequestDefaults, offset })
 );

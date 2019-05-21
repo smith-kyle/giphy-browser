@@ -7,4 +7,6 @@ const mapStateToProps = state => ({
   gifs: gifsStateSelector(state)
 });
 
-export default connect(mapStateToProps)(props => <Gallery {...props} />);
+export default connect(mapStateToProps)(props =>
+  props.gifs.length > 0 ? <Gallery {...props} /> : null
+);

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
     "cross-fetch": "^3.0.2",
     "lodash.debounce": "^4.0.8",
     "ramda": "^0.26.1",
