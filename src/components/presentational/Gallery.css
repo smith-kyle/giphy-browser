@@ -1,0 +1,7 @@
+.Gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+  background-color: "white";
+}
