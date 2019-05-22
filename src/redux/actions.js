@@ -1,4 +1,10 @@
-import { SET_QUERY, ADD_GIFS, SET_IS_LOADING, CLEAR_GIFS } from "./actionTypes";
+import {
+  SET_QUERY,
+  ADD_GIFS,
+  SET_IS_LOADING,
+  CLEAR_GIFS,
+  SET_SELECTED_GIF
+} from "./actionTypes";
 import fetch from "cross-fetch";
 import { gifsUrlSelector } from "./selectors";
 import debounce from "lodash.debounce";
@@ -11,6 +17,11 @@ export const addGifs = gifs => ({
 export const setIsLoading = isLoading => ({
   type: SET_IS_LOADING,
   payload: isLoading
+});
+
+export const setSelectedGif = id => ({
+  type: SET_SELECTED_GIF,
+  payload: id
 });
 
 const _fetchGifs = (dispatch, getState) => {

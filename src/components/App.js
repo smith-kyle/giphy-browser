@@ -7,6 +7,7 @@ import { SET_WINDOW_DIMS } from "../redux/actionTypes";
 import debounce from "lodash.debounce";
 import store from "../redux/store";
 import { fetchGifs } from "../redux/actions";
+import LightboxContainer from "./containers/LightboxContainer";
 
 const bootstrap = () => {
   const handleResize = debounce(
@@ -32,6 +33,7 @@ function App() {
           <LoadingContainer />
         </div>
       </QueryBarContainer>
+      <LightboxContainer />
     </div>
   );
 }

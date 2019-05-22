@@ -21,8 +21,25 @@ export const windowHeightSelector = createSelector(
 
 export const gifsStateSelector = store => store.gifs;
 
-export const offsetSelector = createSelector(
+export const gifsSelector = createSelector(
   gifsStateSelector,
+  ({ gifs }) => gifs
+);
+
+export const gifsByIdSelector = createSelector(
+  gifsSelector,
+  R.reduce((acc, { id, ...rest }) => ({ ...acc, [id]: { id, ...rest } }), {})
+);
+
+export const selectedGifSelector = createSelector(
+  gifsStateSelector,
+  gifsByIdSelector,
+  ({ selectedId }, gifsById) =>
+    selectedId === null ? null : gifsById[selectedId]
+);
+
+export const offsetSelector = createSelector(
+  gifsSelector,
   R.length
 );
 
