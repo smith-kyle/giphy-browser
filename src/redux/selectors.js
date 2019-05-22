@@ -32,6 +32,15 @@ export const gifsByIdSelector = createSelector(
   R.reduce((acc, { id, ...rest }) => ({ ...acc, [id]: { id, ...rest } }), {})
 );
 
+export const uniqueGifsSelector = createSelector(
+  gifsByIdSelector,
+  gifsById =>
+    R.pipe(
+      R.keys,
+      R.map(id => gifsById[id])
+    )(gifsById)
+);
+
 export const selectedGifSelector = createSelector(
   gifsStateSelector,
   gifsByIdSelector,

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import {
-  gifsSelector,
+  uniqueGifsSelector,
   windowWidthSelector,
   windowHeightSelector
 } from "../../redux/selectors";
@@ -9,7 +9,7 @@ import { fetchGifs, setIsLoading, selectGif } from "../../redux/actions";
 import Gallery from "../presentational/Gallery";
 
 const mapStateToProps = state => ({
-  gifs: gifsSelector(state),
+  gifs: uniqueGifsSelector(state),
   windowHeight: windowHeightSelector(state),
   windowWidth: windowWidthSelector(state)
 });
