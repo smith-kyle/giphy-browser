@@ -1,6 +1,7 @@
 {
   "name": "giphy-browser",
   "version": "0.1.0",
+  "homepage": "http://smith-kyle.github.io/giphy-browser",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
