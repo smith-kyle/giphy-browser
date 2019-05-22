@@ -1,17 +1,19 @@
 import React from "react";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
+import { withStyles } from "@material-ui/core/styles";
+import { QUERY_BAR_HEIGHT } from "../../redux/constants";
 
 const NUM_COLS = 3;
 
-const Gallery = ({ gifs }) => (
+const Gallery = ({ gifs, windowHeight, windowWidth }) => (
   <div className="Gallery">
     <GridList
       cellHeight={160}
       cols={NUM_COLS}
       style={{
-        width: 500,
-        height: 450
+        width: windowWidth,
+        height: windowHeight - QUERY_BAR_HEIGHT
       }}
     >
       {gifs.map(gif => (

@@ -7,6 +7,18 @@ import {
   GIPHY_API_KEY
 } from "./constants";
 
+export const windowStateSelector = store => store.window;
+
+export const windowWidthSelector = createSelector(
+  windowStateSelector,
+  ({ width }) => width
+);
+
+export const windowHeightSelector = createSelector(
+  windowStateSelector,
+  ({ height }) => height
+);
+
 export const gifsStateSelector = store => store.gifs;
 
 export const offsetSelector = createSelector(

@@ -7,9 +7,14 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
+import { QUERY_BAR_HEIGHT } from "../../redux/constants";
+
 const styles = theme => ({
   root: {
     width: "100%"
+  },
+  bar: {
+    height: QUERY_BAR_HEIGHT
   },
   grow: {
     flexGrow: 1
@@ -71,7 +76,7 @@ const QueryBar = props => {
   const { classes, query, onChange, children } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.bar} position="static">
         <Toolbar>
           <Typography
             className={classes.title}

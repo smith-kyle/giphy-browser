@@ -25,7 +25,7 @@ const _fetchGifs = (dispatch, getState) => {
     });
 };
 
-const fetchGifs = debounce(_fetchGifs, 400);
+export const fetchGifs = debounce(_fetchGifs, 400);
 
 export const setQuery = ({ target: { value: payload } }) => dispatch => {
   dispatch({
