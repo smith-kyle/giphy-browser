@@ -1,8 +1,14 @@
-import { ADD_GIFS, CLEAR_GIFS, SET_SELECTED_GIF } from "../actionTypes";
+import {
+  ADD_GIFS,
+  CLEAR_GIFS,
+  SET_SELECTED_GIF,
+  SET_SELECTED_GIF_URL
+} from "../actionTypes";
 
 const initialState = {
   gifs: [],
-  selectedId: null
+  selectedId: null,
+  selectedUrl: null
 };
 
 export default function(state = initialState, action) {
@@ -23,6 +29,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         selectedId: action.payload
+      };
+    }
+    case SET_SELECTED_GIF_URL: {
+      return {
+        ...state,
+        selectedUrl: action.payload
       };
     }
     default:

@@ -7,14 +7,16 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
-import { QUERY_BAR_HEIGHT } from "../../redux/constants";
+import { QUERY_BAR_HEIGHT } from "../../constants";
 
 const styles = theme => ({
   root: {
     width: "100%"
   },
   bar: {
-    height: QUERY_BAR_HEIGHT
+    height: QUERY_BAR_HEIGHT,
+    position: "relative",
+    zIndex: 2
   },
   grow: {
     flexGrow: 1

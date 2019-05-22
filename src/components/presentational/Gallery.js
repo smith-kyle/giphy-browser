@@ -1,13 +1,14 @@
 import React, { useRef, useEffect } from "react";
-import { QUERY_BAR_HEIGHT } from "../../redux/constants";
+import { QUERY_BAR_HEIGHT } from "../../constants";
 import { withStyles } from "@material-ui/core/styles";
+import LoadingContainer from "../containers/LoadingContainer";
 
 const styles = {
   root: {
     display: "flex",
     flexWrap: "wrap",
     overflow: "scroll",
-    justifyContent: "center"
+    justifyContent: "flex-start"
   },
   li: {
     width: "31%",
@@ -56,7 +57,7 @@ const Gallery = ({
   });
   return (
     <div
-      className={`Gallery ${classes.root}`}
+      className={classes.root}
       ref={galleryEl}
       style={{
         width: windowWidth,
@@ -78,6 +79,7 @@ const Gallery = ({
           </div>
         </li>
       ))}
+      <LoadingContainer />
     </div>
   );
 };

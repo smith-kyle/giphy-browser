@@ -1,6 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
+import Loading from "./Loading";
+
 const styles = {
   root: {
     position: "absolute",
@@ -10,7 +12,8 @@ const styles = {
     display: "flex",
     height: "100%",
     width: "100%",
-    top: 0
+    top: 0,
+    zIndex: 3
   },
   image: {
     display: "block",
@@ -21,18 +24,22 @@ const styles = {
   }
 };
 
-const Lightbox = ({ classes, gif, close }) => {
+const Lightbox = ({ classes, gif, gifUrl, close }) => {
   if (!gif) return null;
   return (
     <div className={classes.root} onClick={close}>
-      <img
-        alt={gif.title}
-        className={classes.image}
-        onClick={event => event.stopPropagation()}
-        src={gif.images.original.url}
-        width={gif.images.original.width}
-        height={gif.images.original.height}
-      />
+      {gifUrl ? (
+        <img
+          alt={gif.title}
+          className={classes.image}
+          onClick={event => event.stopPropagation()}
+          src={gifUrl}
+          width={gif.images.original.width}
+          height={gif.images.original.height}
+        />
+      ) : (
+        <Loading color="secondary" isLoading />
+      )}
     </div>
   );
 };

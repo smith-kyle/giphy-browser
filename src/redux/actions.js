@@ -3,10 +3,11 @@ import {
   ADD_GIFS,
   SET_IS_LOADING,
   CLEAR_GIFS,
-  SET_SELECTED_GIF
+  SET_SELECTED_GIF,
+  SET_SELECTED_GIF_URL
 } from "./actionTypes";
 import fetch from "cross-fetch";
-import { gifsUrlSelector } from "./selectors";
+import { gifsUrlSelector, selectedGifSelector } from "./selectors";
 import debounce from "lodash.debounce";
 
 export const addGifs = gifs => ({
@@ -23,6 +24,19 @@ export const setSelectedGif = id => ({
   type: SET_SELECTED_GIF,
   payload: id
 });
+
+export const setSelectedGifUrl = url => ({
+  type: SET_SELECTED_GIF_URL,
+  payload: url
+});
+
+export const selectGif = id => (dispatch, getState) => {
+  dispatch(setSelectedGif(id));
+  const selectedGif = selectedGifSelector(getState());
+  return fetch(selectedGif.images.original.url)
+    .then(response => response.blob())
+    .then(blob => dispatch(setSelectedGifUrl(URL.createObjectURL(blob))));
+};
 
 const _fetchGifs = (dispatch, getState) => {
   const url = gifsUrlSelector(getState());

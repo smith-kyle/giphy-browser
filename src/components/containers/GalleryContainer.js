@@ -1,11 +1,10 @@
-import React from "react";
 import { connect } from "react-redux";
 import {
   gifsSelector,
   windowWidthSelector,
   windowHeightSelector
 } from "../../redux/selectors";
-import { fetchGifs, setIsLoading, setSelectedGif } from "../../redux/actions";
+import { fetchGifs, setIsLoading, selectGif } from "../../redux/actions";
 import Gallery from "../presentational/Gallery";
 
 const mapStateToProps = state => ({
@@ -19,10 +18,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setIsLoading(true));
     dispatch(fetchGifs);
   },
-  onClickImage: id => dispatch(setSelectedGif(id))
+  onClickImage: id => dispatch(selectGif(id))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(props => (props.gifs.length > 0 ? <Gallery {...props} /> : null));
+)(Gallery);

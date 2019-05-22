@@ -1,18 +1,24 @@
-import React from "react";
 import { connect } from "react-redux";
-import { selectedGifSelector } from "../../redux/selectors";
+import {
+  selectedGifSelector,
+  selectedGifUrlSelector
+} from "../../redux/selectors";
 import Lightbox from "../presentational/Lightbox";
-import { setSelectedGif } from "../../redux/actions";
+import { setSelectedGif, setSelectedGifUrl } from "../../redux/actions";
 
 const mapStateToProps = state => ({
-  gif: selectedGifSelector(state)
+  gif: selectedGifSelector(state),
+  gifUrl: selectedGifUrlSelector(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  close: () => dispatch(setSelectedGif(null))
+  close: () => {
+    dispatch(setSelectedGif(null));
+    dispatch(setSelectedGifUrl(null));
+  }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(props => <Lightbox {...props} />);
+)(Lightbox);

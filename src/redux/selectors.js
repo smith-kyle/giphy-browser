@@ -5,7 +5,7 @@ import {
   GIPHY_SEARCH_URL,
   GIPHY_TRENDING_URL,
   GIPHY_API_KEY
-} from "./constants";
+} from "../constants";
 
 export const windowStateSelector = store => store.window;
 
@@ -36,6 +36,11 @@ export const selectedGifSelector = createSelector(
   gifsByIdSelector,
   ({ selectedId }, gifsById) =>
     selectedId === null ? null : gifsById[selectedId]
+);
+
+export const selectedGifUrlSelector = createSelector(
+  gifsStateSelector,
+  ({ selectedUrl }) => selectedUrl
 );
 
 export const offsetSelector = createSelector(
