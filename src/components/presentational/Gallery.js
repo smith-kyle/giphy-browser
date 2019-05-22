@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { QUERY_BAR_HEIGHT } from "../../constants";
 import { withStyles } from "@material-ui/core/styles";
+
+import { QUERY_BAR_HEIGHT } from "../../constants";
 import LoadingContainer from "../containers/LoadingContainer";
 
 const styles = {

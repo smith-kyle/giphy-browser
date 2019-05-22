@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import debounce from "lodash.debounce";
+import { withStyles } from "@material-ui/core/styles";
+
 import QueryBarContainer from "./containers/QueryBarContainer";
 import GalleryContainer from "./containers/GalleryContainer";
 import { SET_WINDOW_DIMS } from "../redux/actionTypes";
-import debounce from "lodash.debounce";
-import store from "../redux/store";
 import { fetchGifs, setIsLoading } from "../redux/actions";
 import LightboxContainer from "./containers/LightboxContainer";
-import { withStyles } from "@material-ui/core/styles";
 
-const bootstrap = () => {
-  const handleResize = debounce(
-    () =>
-      store.dispatch({
-        type: SET_WINDOW_DIMS,
-        payload: { height: window.innerHeight, width: window.innerWidth }
-      }),
-    100
-  );
+const mapDispatchToProps = dispatch => ({
+  onComponentDidMount: () => {
+    const handleResize = debounce(
+      () =>
+        dispatch({
+          type: SET_WINDOW_DIMS,
+          payload: { height: window.innerHeight, width: window.innerWidth }
+        }),
+      100
+    );
 
-  store.dispatch(setIsLoading(true));
-  store.dispatch(fetchGifs);
+    dispatch(setIsLoading(true));
+    dispatch(fetchGifs);
 
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-};
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }
+});
 
 const styles = {
   results: {
@@ -35,8 +38,8 @@ const styles = {
   }
 };
 
-const App = ({ classes }) => {
-  useEffect(bootstrap, []);
+const App = ({ classes, onComponentDidMount }) => {
+  useEffect(onComponentDidMount, []);
   return (
     <div>
       <QueryBarContainer>
@@ -49,4 +52,7 @@ const App = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(styles)(App));

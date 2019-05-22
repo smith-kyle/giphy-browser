@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import { querySelector } from "../../redux/selectors";
 import { setQuery } from "../../redux/actions";
 import QueryBar from "../presentational/QueryBar";

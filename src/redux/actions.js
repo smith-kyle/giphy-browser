@@ -1,3 +1,6 @@
+import fetch from "cross-fetch";
+import debounce from "lodash.debounce";
+
 import {
   SET_QUERY,
   ADD_GIFS,
@@ -6,9 +9,7 @@ import {
   SET_SELECTED_GIF,
   SET_SELECTED_GIF_URL
 } from "./actionTypes";
-import fetch from "cross-fetch";
 import { gifsUrlSelector, selectedGifSelector } from "./selectors";
-import debounce from "lodash.debounce";
 
 export const addGifs = gifs => ({
   type: ADD_GIFS,

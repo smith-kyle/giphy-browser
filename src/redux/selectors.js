@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import * as R from "ramda";
+
 import { appendURLParams } from "./utils";
 import {
   GIPHY_SEARCH_URL,
