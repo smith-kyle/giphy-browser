@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
 
-import { QUERY_BAR_HEIGHT } from "../../constants";
+import {
+  INFINITE_SCROLL_LOAD_BEGIN_OFFSET,
+  QUERY_BAR_HEIGHT
+} from "../../constants";
 import LoadingContainer from "../containers/LoadingContainer";
 
 const styles = {
@@ -45,7 +48,10 @@ const Gallery = ({
     const handleScroll = ({
       target: { scrollTop, scrollHeight, clientHeight }
     }) => {
-      if (scrollTop + clientHeight >= scrollHeight) {
+      if (
+        scrollTop + clientHeight + INFINITE_SCROLL_LOAD_BEGIN_OFFSET >=
+        scrollHeight
+      ) {
         getNextPage();
       }
     };
