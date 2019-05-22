@@ -53,7 +53,10 @@ const Gallery = ({
       lastSeenGalleryEl = galleryEl.current;
       lastSeenGalleryEl.addEventListener("scroll", handleScroll);
     }
-    return () => lastSeenGalleryEl.removeEventListener("scroll", handleScroll);
+    return () =>
+      lastSeenGalleryEl
+        ? lastSeenGalleryEl.removeEventListener("scroll", handleScroll)
+        : null;
   });
   return (
     <div
