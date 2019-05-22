@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import QueryBarContainer from "./containers/QueryBarContainer";
 import LoadingContainer from "./containers/LoadingContainer";
 import GalleryContainer from "./containers/GalleryContainer";
@@ -8,6 +7,7 @@ import debounce from "lodash.debounce";
 import store from "../redux/store";
 import { fetchGifs } from "../redux/actions";
 import LightboxContainer from "./containers/LightboxContainer";
+import { withStyles } from "@material-ui/core/styles";
 
 const bootstrap = () => {
   const handleResize = debounce(
@@ -23,12 +23,20 @@ const bootstrap = () => {
   return () => window.removeEventListener("resize", handleResize);
 };
 
-function App() {
+const styles = {
+  results: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+};
+
+const App = ({ classes }) => {
   useEffect(bootstrap, []);
   return (
-    <div className="App">
+    <div>
       <QueryBarContainer>
-        <div className="App-results">
+        <div className={classes.results}>
           <GalleryContainer />
           <LoadingContainer />
         </div>
@@ -36,6 +44,6 @@ function App() {
       <LightboxContainer />
     </div>
   );
-}
+};
 
-export default App;
+export default withStyles(styles)(App);

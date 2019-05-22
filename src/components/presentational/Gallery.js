@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { QUERY_BAR_HEIGHT } from "../../redux/constants";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -20,8 +20,7 @@ const styles = {
     cursor: "pointer",
     height: "100%",
     display: "block",
-    position: "relative",
-    overflow: "hidden"
+    position: "relative"
   },
   image: {
     top: "50%",
@@ -48,11 +47,13 @@ const Gallery = ({
         getNextPage();
       }
     };
+    let lastSeenGalleryEl;
     if (galleryEl.current) {
-      galleryEl.current.addEventListener("scroll", handleScroll);
+      lastSeenGalleryEl = galleryEl.current;
+      lastSeenGalleryEl.addEventListener("scroll", handleScroll);
     }
-    return () => galleryEl.current.removeEventListener("scroll", handleScroll);
-  }, [galleryEl.current]);
+    return () => lastSeenGalleryEl.removeEventListener("scroll", handleScroll);
+  });
   return (
     <div
       className={`Gallery ${classes.root}`}
